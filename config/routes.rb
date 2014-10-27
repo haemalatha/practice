@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  # get 'sessions/new'
+
+  # get 'users/new'
+
   # get 'schools/index'
+  get "/signup", to: "users#new", as: :new_users
+  post "/users/create", to: "users#create", as: :users
+
   get "new", to: "schools#new"
    get "schools/:id", to:  "schools#show", as: :show
    post  "new", to: "schools#create", as: :create
   get 'index', to: "schools#index", as: :schools
-
+  get "/login", to: "sessions#new", as: :login
+resources :sessions
   resources :schools
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
